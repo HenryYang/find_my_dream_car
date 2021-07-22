@@ -62,7 +62,7 @@ def get_vehicle(my_cookies, city):
 		vehicle_info = tree.xpath('//td[@class="temp_content_td"]/text()')
 		print('目前租金區間: ' + rent_price[i] + '，現有車數: ' + str(int(len(vehicle_type)/2)) + ' 台' )
 		for i in range(int(len(vehicle_type)/2)):
-			print("車款:" + vehicle_info[6*i] + " " +  vehicle_type[i] + " ,顏色:" + vehicle_info[6*i+2] + " ,車價:" + vehicle_info[6*i+1] + " ,年份:" + vehicle_info[6*i+4] + " ,公里數:" + vehicle_info[6*i+5])
+			print("車款:" + vehicle_info[7*i] + " " +  vehicle_type[i] + " ,規格:" + vehicle_info[7*i+1] + " ,原始車價:" + vehicle_info[7*i+2] + " ,顏色:" + vehicle_info[7*i+3] + " ,年份:" + vehicle_info[7*i+5] + " ,公里數:" + vehicle_info[7*i+6])
 		print("---------------------------------------------------")
 		print(" ")
 		
