@@ -8,7 +8,7 @@ from lxml import html
 import time
 
 rent_price = {
-	'82': '6800+2.24/KM', 
+	'118': '6800+2.24/KM', 
 	'83': '8800+2.8/KM', 
 	'84': '10800+3.36/KM', 
 	'85': '12800+4.0/KM', 
@@ -62,7 +62,7 @@ def get_vehicle(my_cookies, city):
 		vehicle_info = tree.xpath('//td[@class="temp_content_td"]/text()')
 		print('目前租金區間: ' + rent_price[i] + '，現有車數: ' + str(int(len(vehicle_type)/2)) + ' 台' )
 		for i in range(int(len(vehicle_type)/2)):
-			print("車款:" + vehicle_info[7*i] + " " +  vehicle_type[i] + " ,規格:" + vehicle_info[7*i+1] + " ,原始車價:" + vehicle_info[7*i+2] + " ,顏色:" + vehicle_info[7*i+3] + " ,年份:" + vehicle_info[7*i+5] + " ,公里數:" + vehicle_info[7*i+6])
+			print("車款:" + vehicle_info[7*i] + " " +  vehicle_type[i].splitlines()[0] + " ,規格:" + vehicle_info[7*i+1] + " ,原始車價:" + vehicle_info[7*i+2] + " ,顏色:" + vehicle_info[7*i+3] + " ,年份:" + vehicle_info[7*i+5] + " ,公里數:" + vehicle_info[7*i+6])
 		print("---------------------------------------------------")
 		print(" ")
 		
