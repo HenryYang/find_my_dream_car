@@ -2,6 +2,8 @@
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
 import pickle, time, sys
 import requests
 from lxml import html
@@ -27,13 +29,14 @@ rent_price = {
 def get_cookie(id, pwd):
 	print("開啟 Selenium...")
 	chrome_options = Options()
-	chrome_options.add_argument('--headless') 
-	web = webdriver.Chrome("./chromedriver", options = chrome_options)
+	chrome_options.add_argument('--headless')
+	s=Service("./chromedriver")
+	web = webdriver.Chrome(service=s, options = chrome_options)
 	web.get("https://sealand.tw/user/login")
 
 	print("載入中...")
-	email = web.find_element_by_id("email")
-	password = web.find_element_by_id("password")
+	email = web.find_element(By.ID, "email")
+	password = web.find_element(By.ID, "password")
 
 	email.send_keys(id)
 	password.send_keys(pwd)
