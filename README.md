@@ -36,18 +36,22 @@
 
 ### 規格與參數說明
 
-* jq
+* 只需要安裝 jq
 
 
+
+#### 中古車
 ```
 curl -s https://gateway.api.car-plus.com.tw/common/srental/v1/car/subscribeInfos\?carState\=OLD\&orderBy\=MONTH_FEE\&page\=1\&size\=999\&sort\=ASC | jq '.data.page.list' | jq 'map(. + {Car : (.locationGeoRegionName +" "+ .mfgYear +" 年 " + .carBrand.brandName + " " + .carModel.carModelName + " " + .colorDesc + ", 車號：" + .plateNo + ", 租金：" + (.subscribeLevel.monthlyFee|tostring) + ", 行駛里程：" + (.currentMileage|tostring) )} | del(.carNo, .plateNo, .locationGeoRegion, .locationGeoRegionName, .carBrand, .carImages, .subscribeLevel, .carModel, .displacement, .mfgYear, .gearType, .fuelType, .colorDesc, .currentMileage, .equipIds, .tagIds, .carState))' | jq '.[].Car'
 ```
 
+
+#### 全新車
 ```
 curl -s https://gateway.api.car-plus.com.tw/common/srental/v1/car/subscribeInfos\?carState\=NEW\&orderBy\=MONTH_FEE\&page\=1\&size\=999\&sort\=ASC | jq '.data.page.list' | jq 'map(. + {Car : (.locationGeoRegionName +" "+ .mfgYear +" 年 " + .carBrand.brandName + " " + .carModel.carModelName + " " + .colorDesc + ", 車號：" + .plateNo + ", 租金：" + (.subscribeLevel.monthlyFee|tostring) + ", 行駛里程：" + (.currentMileage|tostring) )} | del(.carNo, .plateNo, .locationGeoRegion, .locationGeoRegionName, .carBrand, .carImages, .subscribeLevel, .carModel, .displacement, .mfgYear, .gearType, .fuelType, .colorDesc, .currentMileage, .equipIds, .tagIds, .carState))' | jq '.[].Car'
 ```
 
-
+#### 大概會顯示成這樣
 ```
 "北區 2018 年 豐田 NEW VIOS 1.5 灰, 車號：RBX-2073, 租金：6800, 行駛里程：96119"
 "南區 2019 年 三菱 Grand Lancer 1.8 灰, 車號：RCL-5029, 租金：6800, 行駛里程：52260"
