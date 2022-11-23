@@ -10,6 +10,11 @@
 
 * Python3 + Selenium + Chrome
 
+```
+pip3 install selenium requests lxml
+python3 get_info.py
+``
+
 請記得使用自己的帳號密碼登入。  
 
 `rent_price` 對應的是各方案，預設已經把中古車源的對應都放上去了  
@@ -38,7 +43,9 @@
 
 * 只需要安裝 jq
 
-
+```
+brew install jq
+``
 
 #### 中古車
 ```
