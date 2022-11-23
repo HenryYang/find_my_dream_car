@@ -13,7 +13,7 @@
 ```
 pip3 install selenium requests lxml
 python3 get_info.py
-``
+```
 
 請記得使用自己的帳號密碼登入。  
 
@@ -45,7 +45,7 @@ python3 get_info.py
 
 ```
 brew install jq
-``
+```
 
 #### 中古車
 ```
